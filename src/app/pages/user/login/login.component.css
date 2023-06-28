@@ -1,3 +1,9 @@
+.center {
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+
 .card {
 	border: none;
 	border-top: 5px solid  rgb(176,106,252);
@@ -8,6 +14,7 @@
 p {
 	font-weight: 600;
 	font-size: 15px;
+	width: 100%;
 }
 
 .myform {
@@ -33,13 +40,13 @@ p {
 }
 
 .be {
-    text-align: right;
-	align-items: right;
+    text-align: center;
+	display: block;
 }
 
 .bs {
-    text-align: left;
-	align-items: left;
+    text-align: center;
+	display: block;
 }
 
 .btn-primary {
@@ -58,8 +65,8 @@ small {
 }
 
 @media(min-width: 767px) {
-	.be, .bs {
-		text-align: right;
+	.card {
+		width: 750px;
 	}
 }
 
@@ -68,11 +75,8 @@ small {
 		text-align: center;
 		align-items: center;
 	}
-}
 
-@media(max-width: 450px) {
-
-	.division .line {
-		width: 50%;
+	.card {
+		width: 90%;
 	}
 }
