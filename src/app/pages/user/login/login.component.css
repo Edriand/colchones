@@ -4,6 +4,14 @@
   	align-items: center;
 }
 
+.title {
+	color: #A464EC;
+}
+
+.link {
+	color: #B06AFC;
+}
+
 .card {
 	border: none;
 	border-top: 5px solid  rgb(176,106,252);
