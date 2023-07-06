@@ -1,3 +1,7 @@
+input {
+	color: whitesmoke;
+}
+
 .center {
 	display: flex;
   	justify-content: center;
