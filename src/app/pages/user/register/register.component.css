@@ -1,3 +1,7 @@
+input {
+	color: whitesmoke;
+}
+
 .center {
 	display: flex;
   	justify-content: center;
@@ -42,11 +46,12 @@ p {
 .be {
     text-align: center;
 	display: block;
+	color: #4ecbdb
 }
 
 .bs {
     text-align: center;
-	display: block;
+	display: block;;
 }
 
 .btn-primary {
