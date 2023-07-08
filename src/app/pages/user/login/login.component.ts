@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -11,5 +12,6 @@ export class LoginComponent {
 
   signIn() {
     console.log(this.username, this.password);
+    console.log(environment.production)
   }
 }
