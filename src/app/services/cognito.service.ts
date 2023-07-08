@@ -35,7 +35,7 @@ export class CognitoService {
     });
   }
 
-  public signOut(user: User): Promise<any> {
+  public signOut(): Promise<any> {
     return Auth.signOut().then(() => {
       this.authenticationSubject.next(false);
     });
