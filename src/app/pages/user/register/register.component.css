@@ -70,7 +70,7 @@ p {
 }
 
 small {
-	color: #F2CEFF;
+    color: black!important;
 }
 
 @media(min-width: 767px) {
