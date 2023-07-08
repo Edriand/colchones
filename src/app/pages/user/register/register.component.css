@@ -1,3 +1,7 @@
+small {
+	color: black!important;
+}
+
 input {
 	color: whitesmoke;
 }
@@ -46,7 +50,7 @@ p {
 .be {
     text-align: center;
 	display: block;
-	color: #4ecbdb
+	color: #7DCA76;
 }
 
 .bs {
