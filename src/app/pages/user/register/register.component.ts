@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CognitoService } from 'src/app/services/cognito.service';
+import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user.interface';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-register',
@@ -9,27 +11,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  isConfirm: boolean;
   user: User;
 
-  constructor(private router: Router, private cognitoService: CognitoService) {
-    this.isConfirm = false;
-    this.user = {} as User;
+  constructor(private router: Router, private cognitoService: CognitoService, private userService: UserService) {
+    this.user = userService.getUser();
   }
 
   public signUp() {
-    this.cognitoService.signUp(this.user).then(() => {
-      this.isConfirm = true;
-    }).catch(() => {
-      alert("¡Algo ha ido mal con el registro!");
-    });
-  }
-
-  public confirmSignUp() {
-    this.cognitoService.signUp(this.user).then(() => {
-      this.router.navigate(['/user/login'])
-    }).catch(() => {
-      alert("¡Algo ha ido mal con la confirmación del registro!");
-    });
+    if(this.userService.checkValuesRegister(this.user) && this.userService.checkLength(this.user) && this.userService.comparePasswords(this.user))
+      this.cognitoService.signUp(this.user).then(() => {
+        this.router.navigate([`/user/confirm/${this.user.username}`]);
+      }).catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Lo sentimos',
+          text: 'Algo ha ido mal con el registro'
+        })
+      });
   }
 }

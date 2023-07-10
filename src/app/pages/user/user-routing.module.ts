@@ -18,6 +18,10 @@ const routes: Routes = [
     component: ConfirmRegisterComponent
   },
   {
+    path: 'confirm/:id',
+    component: ConfirmRegisterComponent
+  },
+  {
     path: '**',
     redirectTo: 'login'
   }

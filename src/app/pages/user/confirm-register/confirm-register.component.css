@@ -1,0 +1,90 @@
+small {
+	color: black!important;
+}
+
+input {
+	color: whitesmoke;
+}
+
+.center {
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+
+.card {
+	border: none;
+	border-top: 5px solid  rgb(125, 202, 118);
+	background: #212042;
+	color: #57557A;
+}
+
+p {
+	font-weight: 600;
+	font-size: 15px;
+	width: 100%;
+}
+
+.myform {
+	padding: 0 25px 0 33px;
+}
+
+.form-control {
+	border: 1px solid #57557A;
+	border-radius: 3px;
+	background: #212042;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	
+}
+
+.form-control:focus {
+	border: 1px solid #57557A;
+	border-radius: 3px;
+	box-shadow: none;
+	background: #212042;
+	color: #fff;
+	letter-spacing: 1px;
+}
+
+.be {
+    text-align: center;
+	display: block;
+}
+
+.bs {
+    text-align: center;
+	display: block;;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, rgb(125, 202, 118) 39%,rgb(0, 247, 255) 101%);
+    border: none;
+    border-radius: 50px;
+}
+
+.btn-primary:focus {
+	box-shadow: none;
+	border: none;
+}
+
+small {
+    color: black!important;
+}
+
+@media(min-width: 767px) {
+	.card {
+		width: 750px;
+	}
+}
+
+@media(max-width: 767px) {
+	.be, .bs {
+		text-align: center;
+		align-items: center;
+	}
+
+	.card {
+		width: 90%;
+	}
+}
