@@ -26,7 +26,7 @@ export class RegisterComponent {
           icon: 'error',
           title: 'Lo sentimos',
           text: 'Algo ha ido mal con el registro'
-        })
+        });
       });
   }
 }
