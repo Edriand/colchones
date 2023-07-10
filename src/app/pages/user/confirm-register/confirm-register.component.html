@@ -6,17 +6,17 @@
                 <hr class="mt-0">
 				<form class="myform mt-2"  spellcheck="false">
 					<div class="form-group">
-						<input  type="email"
+						<input  type="text"
 								class="form-control"
-								name="email"
-								[(ngModel)]="user.email"
+								name="username"
+								[(ngModel)]="user.username"
 								placeholder="Usuario"
 								required>
   					</div>
 					<div class="form-group">
 						<input  type="text"
 								class="form-control"
-								name="username"
+								name="code"
 								[(ngModel)]="user.code"
 								placeholder="Código de Confirmación"
 								required>
@@ -30,7 +30,7 @@
 					  	</div>
 					</div>
   					<div class="form-group mt-3" style="text-align: center;">
-						<button (click)="confirmSignUp()" class="btn btn-block btn-primary btn-lg"><small>Registrarse</small></button>
+						<button (click)="confirmSignUp()" class="btn btn-block btn-primary btn-lg"><small>Confirmar Registro</small></button>
   					</div>
 				</form>
 			</div>

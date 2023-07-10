@@ -21,7 +21,20 @@ export class UserService {
   public checkValuesRegister(user: User) {
     if((user.email.trim() != '') && (user.username.trim() != '')
         && (user.password.trim() != '') && (user.passwordC.trim() != ''))
-        return true;
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'Faltan datos por rellenar'
+    });
+        
+    return false;
+  }
+
+  public checkValuesConfirmRegister(user: User) {
+    if((user.username.trim() != '') && (user.code.trim() != ''))
+      return true;
 
     Swal.fire({
       icon: 'error',
@@ -45,7 +58,7 @@ export class UserService {
     return false;
   }
 
-  public checkLength(user: User) {
+  public checkLengthPassword(user: User) {
     if(user.password.trim().length >= 8)
       return true; 
       
@@ -53,6 +66,19 @@ export class UserService {
       icon: 'error',
       title: 'Lo sentimos',
       text: 'La contraseña debe de tener al menos 8 carácteres'
+    });
+
+    return false;
+  }
+
+  public checkLengthCode(user: User) {
+    if(user.code.trim().length === 6)
+      return true; 
+      
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'El código debe de tener al menos 6 carácteres'
     });
 
     return false;

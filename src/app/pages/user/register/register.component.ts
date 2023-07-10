@@ -18,7 +18,7 @@ export class RegisterComponent {
   }
 
   public signUp() {
-    if(this.userService.checkValuesRegister(this.user) && this.userService.checkLength(this.user) && this.userService.comparePasswords(this.user))
+    if(this.userService.checkValuesRegister(this.user) && this.userService.checkLengthPassword(this.user) && this.userService.comparePasswords(this.user))
       this.cognitoService.signUp(this.user).then(() => {
         this.router.navigate([`/user/confirm/${this.user.username}`]);
       }).catch(() => {
