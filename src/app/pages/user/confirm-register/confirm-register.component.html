@@ -2,21 +2,22 @@
 	<div class="row d-flex justify-content-center">
 		<div class="col-12 col-md-8 col-lg-6 col-xl-5 center" style="height: 100vh;">
 			<div class="card py-3 px-2">
-				<p class="text-center mt-2" style="color: #7DCA76;"> REGISTRO </p> 
+				<p class="text-center mt-2" style="color: #7DCA76;"> CONFIRMACIÓN DE REGISTRO </p> 
                 <hr class="mt-0">
+				<p class="text-center mt-2" style="color: #FFCC00;"> REVISA SI EL CÓDIGO TE HA LLEGADO A SPAM </p> 
 				<form class="myform mt-2"  spellcheck="false">
 					<div class="form-group">
-						<input  type="email"
+						<input  type="text"
 								class="form-control"
-								name="email"
-								[(ngModel)]="user.email"
+								name="username"
+								[(ngModel)]="user.username"
 								placeholder="Usuario"
 								required>
   					</div>
 					<div class="form-group">
 						<input  type="text"
 								class="form-control"
-								name="username"
+								name="code"
 								[(ngModel)]="user.code"
 								placeholder="Código de Confirmación"
 								required>
@@ -30,7 +31,7 @@
 					  	</div>
 					</div>
   					<div class="form-group mt-3" style="text-align: center;">
-						<button (click)="confirmSignUp()" class="btn btn-block btn-primary btn-lg"><small>Registrarse</small></button>
+						<button (click)="confirmSignUp()" class="btn btn-block btn-primary btn-lg"><small>Confirmar Registro</small></button>
   					</div>
 				</form>
 			</div>
