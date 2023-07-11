@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ConfirmRegisterComponent } from './confirm-register/confirm-register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ConfirmResetPasswordComponent } from './confirm-reset-password/confirm-reset-password.component';
 
 const routes: Routes = [
   {
@@ -14,12 +16,24 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'confirm',
+    path: 'confirm-user',
     component: ConfirmRegisterComponent
   },
   {
     path: 'confirm/:id',
     component: ConfirmRegisterComponent
+  },
+  {
+    path: 'reset',
+    component: ResetPasswordComponent
+  },
+  {
+    path: 'confirm-password',
+    component: ConfirmResetPasswordComponent
+  },
+  {
+    path: 'confirm-password/:id',
+    component: ConfirmResetPasswordComponent
   },
   {
     path: '**',

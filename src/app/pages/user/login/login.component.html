@@ -21,14 +21,14 @@
 								placeholder="Contraseña"
 								required>
   					</div>
-  					<div class="row">
-  						<div class="col-md-6 col-12 bs">
-                            <p class="col-md-6 col-12 link"><a> Reiniciar </a></p>
-  						</div>
-  						<div class="col-md-6 col-12"> 
-                            <p class="col-md-6 col-12"><a routerLink="/user/register" class="be link"> Registrarse </a></p>
-                        </div>
-  					</div>
+					  <div class="row">
+						<div class="col-md-6 col-12 bs">
+							<p class="col-md-6 col-12"><a routerLink="/user/reset" style="color: #A464EC;"> Reiniciar Contraseña </a></p>
+						</div>
+						<div class="col-md-6 col-12 be">
+							<p class="col-md-6 col-12"><a routerLink="/user/register" style="color: #A464EC;"> Registrarse </a></p>
+					  	</div>
+					</div>
   					<div class="form-group mt-3" style="text-align: center;">
   						<button type="submit" (click)="signIn()" class="btn btn-block btn-primary btn-lg"><small>Iniciar Sesión</small></button>
   					</div>
