@@ -20,7 +20,7 @@ const routes: Routes = [
     component: ConfirmRegisterComponent
   },
   {
-    path: 'confirm/:id',
+    path: 'confirm-user/:id',
     component: ConfirmRegisterComponent
   },
   {

@@ -12,9 +12,9 @@ import Swal from 'sweetalert2'
 })
 export class RegisterComponent {
   user: User;
-
+  
   constructor(private router: Router, private cognitoService: CognitoService, private userService: UserService) {
-    this.user = userService.getUser();
+    this.user = this.userService.getUser();
   }
 
   public signUp() {
