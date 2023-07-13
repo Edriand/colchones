@@ -8,36 +8,41 @@ import { ConfirmResetPasswordComponent } from './confirm-reset-password/confirm-
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'confirm-user',
-    component: ConfirmRegisterComponent
-  },
-  {
-    path: 'confirm-user/:id',
-    component: ConfirmRegisterComponent
-  },
-  {
-    path: 'reset',
-    component: ResetPasswordComponent
-  },
-  {
-    path: 'confirm-password',
-    component: ConfirmResetPasswordComponent
-  },
-  {
-    path: 'confirm-password/:id',
-    component: ConfirmResetPasswordComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'login'
+    path: '',
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'confirm-user',
+        component: ConfirmRegisterComponent
+      },
+      {
+        path: 'confirm-user/:id',
+        component: ConfirmRegisterComponent
+      },
+      {
+        path: 'reset',
+        component: ResetPasswordComponent
+      },
+      {
+        path: 'confirm-password',
+        component: ConfirmResetPasswordComponent
+      },
+      {
+        path: 'confirm-password/:id',
+        component: ConfirmResetPasswordComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'login'
+      }
+    ]
   }
 ];
 
