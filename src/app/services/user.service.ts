@@ -45,6 +45,8 @@ export class UserService {
     return false;
   }
 
+
+  
   public comparePasswords(user: User) {
     if(user.password.trim() === user.passwordC.trim())
       return true;
