@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { CognitoService } from 'src/app/services/cognito.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,8 +13,14 @@ import Swal from 'sweetalert2';
 export class ConfirmResetPasswordComponent {
   user: User;
 
-  constructor(private router: Router, private cognitoService: CognitoService, private userService: UserService) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private cognitoService: CognitoService, private userService: UserService) {
     this.user = userService.getUser();
+  }
+
+  ngOnInit(): void {
+    let username = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.user.username = username ? username : '';
   }
 
   public forgotPasswordSubmit() {
