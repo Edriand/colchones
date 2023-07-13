@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/user/user.module').then(u => u.UserModule)
   },
   {
+    path: 'app',
+    loadChildren: () => import('./pages/app/app.module').then(a => a.AppModule)
+  },
+  {
     path: '**',
     redirectTo: 'user'
   }
