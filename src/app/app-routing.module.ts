@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { loginGuard } from './guards/login.guard';
+import { redirectGuard } from './guards/redirect.guard';
 
 const routes: Routes = [
   {
     path: 'user',
+    canActivate: [redirectGuard],
     loadChildren: () => import('./pages/user/user.module').then(u => u.UserModule)
   },
   {
     path: 'app',
+    canActivate: [loginGuard],
     loadChildren: () => import('./pages/app/app.module').then(a => a.AppModule)
   },
   {

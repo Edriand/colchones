@@ -9,13 +9,11 @@ import { User } from '../interfaces/user.interface';
   providedIn: 'root'
 })
 export class CognitoService {
-  private authenticationSubject: BehaviorSubject<any>;
 
   constructor() {
     Amplify.configure({
       Auth: environment.cognito
     });
-    this.authenticationSubject = new BehaviorSubject<boolean>(false);
   }
 
   public signUp(user: User): Promise<any> {
@@ -34,15 +32,11 @@ export class CognitoService {
   }
 
   public signIn(user: User): Promise<any> {
-    return Auth.signIn(user.username, user.password).then(() => {
-      this.authenticationSubject.next(true);
-    });
+    return Auth.signIn(user.username, user.password);
   }
 
   public signOut(): Promise<any> {
-    return Auth.signOut().then(() => {
-      this.authenticationSubject.next(false);
-    });
+    return Auth.signOut();
   }
 
   public forgotPassword(user: User): Promise<any> {
@@ -57,14 +51,7 @@ export class CognitoService {
     return Auth.currentUserInfo();
   }
 
-  public isAuthentichated(): Promise<boolean> {
-    if (this.authenticationSubject.value)
-      return Promise.resolve(true);
-
-    return this.getUser().then((user:any) => {
-      return user ? true : false
-    }).catch(() => {
-      return false;
-    });
+  public isAuthentichated(): Promise<any> {
+    return Auth.currentAuthenticatedUser();
   }
 }
