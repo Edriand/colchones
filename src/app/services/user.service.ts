@@ -45,7 +45,9 @@ export class UserService {
     return false;
   }
 
-
+  public checVoidRegister(user: User) {
+    return false;
+  }
   
   public comparePasswords(user: User) {
     if(user.password.trim() === user.passwordC.trim())
