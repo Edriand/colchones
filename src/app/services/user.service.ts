@@ -45,7 +45,30 @@ export class UserService {
     return false;
   }
 
-  public checVoidRegister(user: User) {
+  public checkVoidsRegister(user: User) {
+    if (!user.email.includes(' ') && (!user.username.includes(' '))
+        && (!user.password.includes(' ')) && (!user.passwordC.includes(' ')))
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'No se admiten espacios en los campos a rellenar'
+    });
+
+    return false;
+  }
+
+  public checkVoidConfirmRegister(user: User) {
+    if (!user.username.includes(' ') && (!user.code.includes(' ')))
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'No se admiten espacios en los campos a rellenar'
+    });
+
     return false;
   }
   
@@ -75,6 +98,7 @@ export class UserService {
     return false;
   }
 
+  
   public checkLengthCode(user: User) {
     if(user.code.trim().length === 6)
       return true; 
