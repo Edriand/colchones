@@ -18,7 +18,49 @@ export class UserService {
     }
   }
 
-  public checkValuesRegister(user: User) {
+  public checkLogin(user: User) {
+    return this.checkVoidsLogin(user) && this.checkValuesLogin(user) && this.checkLengthPassword(user);
+  }
+
+  public checkResetPassword(user: User) {
+    return this.checkVoidsResetPassword(user) && this.checkValuesResetPassword(user);
+  }
+
+  public checkRegister(user: User) {
+    return this.checkVoidsRegister(user) && this.checkValuesRegister(user) && this.checkLengthPassword(this.user) && this.comparePasswords(user);
+  }
+
+  public checkConfirmRegister(user: User) {
+    return this.checkVoidConfirmRegister(user) && this.checkValuesConfirmRegister(user) && this.checkLengthCode(user);
+  }
+
+  private checkValuesLogin(user: User) {
+    if((user.username.trim() != '') && (user.password.trim() != ''))
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'Faltan datos por rellenar'
+    });
+        
+    return false;
+  }
+
+  private checkValuesResetPassword(user: User) {
+    if(user.username.trim() != '')
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'Faltan datos por rellenar'
+    });
+        
+    return false;
+  }
+
+  private checkValuesRegister(user: User) {
     if((user.email.trim() != '') && (user.username.trim() != '')
         && (user.password.trim() != '') && (user.passwordC.trim() != ''))
       return true;
@@ -32,7 +74,7 @@ export class UserService {
     return false;
   }
 
-  public checkValuesConfirmRegister(user: User) {
+  private checkValuesConfirmRegister(user: User) {
     if((user.username.trim() != '') && (user.code.trim() != ''))
       return true;
 
@@ -45,7 +87,33 @@ export class UserService {
     return false;
   }
 
-  public checkVoidsRegister(user: User) {
+  private checkVoidsLogin(user: User) {
+    if (!user.username.includes(' ') && (!user.password.includes(' ')))
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'No se admiten espacios en los campos a rellenar'
+    });
+
+    return false;
+  }
+
+  private checkVoidsResetPassword(user: User) {
+    if(!user.username.includes(' '))
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'No se admiten espacios en los campos a rellenar'
+    });
+        
+    return false;
+  }
+
+  private checkVoidsRegister(user: User) {
     if (!user.email.includes(' ') && (!user.username.includes(' '))
         && (!user.password.includes(' ')) && (!user.passwordC.includes(' ')))
       return true;
@@ -59,7 +127,7 @@ export class UserService {
     return false;
   }
 
-  public checkVoidConfirmRegister(user: User) {
+  private checkVoidConfirmRegister(user: User) {
     if (!user.username.includes(' ') && (!user.code.includes(' ')))
       return true;
 
@@ -72,7 +140,7 @@ export class UserService {
     return false;
   }
   
-  public comparePasswords(user: User) {
+  private comparePasswords(user: User) {
     if(user.password.trim() === user.passwordC.trim())
       return true;
 
@@ -85,7 +153,7 @@ export class UserService {
     return false;
   }
 
-  public checkLengthPassword(user: User) {
+  private checkLengthPassword(user: User) {
     if(user.password.trim().length >= 8)
       return true; 
       
@@ -99,7 +167,7 @@ export class UserService {
   }
 
   
-  public checkLengthCode(user: User) {
+  private checkLengthCode(user: User) {
     if(user.code.trim().length === 6)
       return true; 
       
