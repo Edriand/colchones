@@ -22,6 +22,10 @@ export class UserService {
     return this.checkVoidsLogin(user) && this.checkValuesLogin(user) && this.checkLengthPassword(user);
   }
 
+  public checkResetPassword(user: User) {
+    return this.checkVoidsResetPassword(user) && this.checkValuesResetPassword(user);
+  }
+
   public checkRegister(user: User) {
     return this.checkVoidsRegister(user) && this.checkValuesRegister(user) && this.checkLengthPassword(this.user) && this.comparePasswords(user);
   }
@@ -32,6 +36,19 @@ export class UserService {
 
   private checkValuesLogin(user: User) {
     if((user.username.trim() != '') && (user.password.trim() != ''))
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'Faltan datos por rellenar'
+    });
+        
+    return false;
+  }
+
+  private checkValuesResetPassword(user: User) {
+    if(user.username.trim() != '')
       return true;
 
     Swal.fire({
@@ -80,6 +97,19 @@ export class UserService {
       text: 'No se admiten espacios en los campos a rellenar'
     });
 
+    return false;
+  }
+
+  private checkVoidsResetPassword(user: User) {
+    if(!user.username.includes(' '))
+      return true;
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Lo sentimos',
+      text: 'No se admiten espacios en los campos a rellenar'
+    });
+        
     return false;
   }
 

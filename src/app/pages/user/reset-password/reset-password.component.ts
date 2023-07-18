@@ -18,14 +18,15 @@ export class ResetPasswordComponent {
   }
 
   public forgotPassword() {
-    this.cognitoService.forgotPassword(this.user).then(() => {
-      this.router.navigate([`/user/confirm-password/${this.user.username}`])
-    }).catch(() => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Lo sentimos',
-        text: 'Algo ha ido mal con el reinicio de contraseña'
-      });
-    });;
+    if(this.userService.checkResetPassword(this.user))
+      this.cognitoService.forgotPassword(this.user).then(() => {
+        this.router.navigate([`/user/confirm-password/${this.user.username}`])
+      }).catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Lo sentimos',
+          text: 'Algo ha ido mal con el reinicio de contraseña'
+        });
+      });;
   }
 }
