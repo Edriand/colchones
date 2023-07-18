@@ -3,7 +3,6 @@ import { User } from 'src/app/interfaces/user.interface';
 import Swal from 'sweetalert2';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
