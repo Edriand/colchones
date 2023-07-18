@@ -25,7 +25,7 @@ export class ConfirmRegisterComponent {
   }
 
   public confirmSignUp() {
-    if(this.userService.checkVoidConfirmRegister(this.user) && this.userService.checkValuesConfirmRegister(this.user) && this.userService.checkLengthCode(this.user))
+    if(this.userService.checkConfirmRegister(this.user))
       this.cognitoService.confirmSignUp(this.user).then(() => {
         this.router.navigate(['/user/login'])
       }).catch(() => {

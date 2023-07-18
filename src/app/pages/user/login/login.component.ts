@@ -18,14 +18,15 @@ export class LoginComponent {
   }
 
   signIn() {
-    this.cognitoService.signIn(this.user).then(() => {
-      this.router.navigate(['/app/home']);
-    }).catch(() => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Lo sentimos',
-        text: 'Algo ha ido mal con el inicio de sesión'
+    if(this.userService.checkLogin(this.user))
+      this.cognitoService.signIn(this.user).then(() => {
+        this.router.navigate(['/app/home']);
+      }).catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Lo sentimos',
+          text: 'Algo ha ido mal con el inicio de sesión'
+        });
       });
-    });
   }
 }
