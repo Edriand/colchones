@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from 'src/app/interfaces/user.interface';
 import Swal from 'sweetalert2';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +27,7 @@ export class UserService {
   }
 
   public checkConfirmResetPassword(user: User) { 
-    return this.checkVoidsConfirmResetPassword(user) && this.checkValuesConfirmResetPassword(user) && this.checkLengthCode(user);
+    return this.checkVoidsConfirmResetPassword(user) && this.checkValuesConfirmResetPassword(user) && this.comparePasswords(user) && this.checkLengthPassword(user) && this.checkLengthCode(user);
   }
 
   public checkRegister(user: User) {
