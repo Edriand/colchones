@@ -31,7 +31,7 @@ export class UserService {
   }
 
   public checkRegister(user: User) {
-    return this.checkVoidsRegister(user) && this.checkValuesRegister(user) && this.checkLengthPassword(this.user) && this.comparePasswords(user);
+    return this.checkVoidsRegister(user) && this.checkValuesRegister(user) && this.checkLengthPassword(user) && this.comparePasswords(user);
   }
 
   public checkConfirmRegister(user: User) {
