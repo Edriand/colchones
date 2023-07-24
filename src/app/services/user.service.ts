@@ -131,8 +131,8 @@ export class UserService {
   }
 
   private checkVoidsConfirmResetPassword(user: User) {
-    if (!user.username.includes('') && (!user.code.includes('')) &&
-    (!user.password.includes('')) &&  (!user.passwordC.includes('')))
+    if (!user.username.includes(' ') && (!user.code.includes(' ')) &&
+    (!user.password.includes(' ')) &&  (!user.passwordC.includes(' ')))
     return true;
 
     Swal.fire({
