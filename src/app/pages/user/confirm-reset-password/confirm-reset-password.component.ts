@@ -27,12 +27,12 @@ export class ConfirmResetPasswordComponent {
     if(this.userService.checkConfirmResetPassword(this.user))
       this.cognitoService.forgotPasswordSubmit(this.user).then(() => {
         this.router.navigate(['/user/login'])
-  }).catch(() => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Lo sentimos',
-        text: 'Algo ha ido mal con el reinicio de contraseña'
+      }).catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Lo sentimos',
+          text: 'Algo ha ido mal con el reinicio de contraseña'
+        });
       });
-    });;
   }
 }
