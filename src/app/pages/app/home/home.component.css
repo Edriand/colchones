@@ -1,7 +1,12 @@
 * {
-    color:whitesmoke;
+    color:black;
 }
 
 .color {
 	background-color: #19123B;
+}
+
+.map {
+    height: 100%;
+    width: 100%;
 }

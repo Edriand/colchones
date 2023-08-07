@@ -7,12 +7,12 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'home',
+        path: '',
         component: HomeComponent
       },
       {
         path: '**',
-        redirectTo: 'home'
+        redirectTo: ''
       }
     ]
   }
