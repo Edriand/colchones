@@ -8,8 +8,9 @@ import * as mapboxgl from 'mapbox-gl';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  map!: mapboxgl.Map;
-  marker!: mapboxgl.Marker;
+  map         !:  mapboxgl.Map;
+  mapMarkers  :   mapboxgl.Marker[] = [];
+  markers     :   mapboxgl.LngLatLike[] | any = [];
 
   ngOnInit(): void {
     (mapboxgl as any).accessToken = environment.mapboxApi;
@@ -21,15 +22,45 @@ export class HomeComponent implements OnInit {
       zoom: 16
     });
 
-    this.marker = new mapboxgl.Marker({
-      draggable: true
-    });
-    
+    let markers = localStorage.getItem("markers");
+    if(!markers) {
+      this.markers = [];
+      this.mapMarkers = [];
+    }
+    else {
+      this.markers = JSON.parse(markers);
+      this.markers.map((m: mapboxgl.LngLatLike) => {
+        let marker = new mapboxgl.Marker({
+          draggable: true
+        });
+
+        marker.getElement().addEventListener('click', (event) => {
+          event.stopPropagation();
+          alert("Clicked");
+        });
+
+        this.mapMarkers.push(
+          marker.setLngLat(m).addTo(this.map)
+        );
+      });
+    }
+
     this.map.on('click', this.add_marker.bind(this));
   }
 
   add_marker(event: any) {
-    var coordinates = event.lngLat;
-    this.marker.setLngLat(coordinates).addTo(this.map);
+    let marker = new mapboxgl.Marker({
+      draggable: true
+    });
+    let coordinates = event.lngLat;
+
+    marker.getElement().addEventListener('click', (event) => {
+      event.stopPropagation();
+      alert("Clicked");
+    });
+    marker.setLngLat(coordinates).addTo(this.map);
+
+    this.markers.push(coordinates);
+    localStorage.setItem("markers", JSON.stringify(this.markers));
   }
 }
