@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as mapboxgl from 'mapbox-gl';
+import { CognitoService } from 'src/app/services/cognito.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,8 @@ export class HomeComponent implements OnInit {
   map         !:  mapboxgl.Map;
   mapMarkers  :   mapboxgl.Marker[] = [];
   markers     :   mapboxgl.LngLatLike[] | any = [];
+
+  constructor(private cognitoService: CognitoService, private router: Router) {}
 
   ngOnInit(): void {
     (mapboxgl as any).accessToken = environment.mapboxApi;
@@ -58,9 +62,14 @@ export class HomeComponent implements OnInit {
       event.stopPropagation();
       alert("Clicked");
     });
+
     marker.setLngLat(coordinates).addTo(this.map);
 
     this.markers.push(coordinates);
     localStorage.setItem("markers", JSON.stringify(this.markers));
+  }
+
+  logOut() {
+    this.cognitoService.signOut().then( _ => this.router.navigate(['/user']));
   }
 }
